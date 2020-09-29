@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+    angularapp:
+        container_name: angularapp
+        image: ${DOCKER_REGISTRY-}webapp
+        build:
+            context: ./demo-frontend
+            dockerfile: Dockerfile
+        ports:
+            - "4200:4242"
+            - "49153:49153"
+        environment:
+            NODE_OPTIONS: --max_old_space_size=4096
+        volumes:
+            - ./demo-frontend:/app
